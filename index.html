@@ -292,24 +292,24 @@
     }
 
     /* =========================
-       REPORT FRAME MEJORADO
+       REPORT FRAME MEJORADO - SIN BORDES BLANCOS
     ========================= */
     .report-frame {
       position: relative;
       border-radius: 24px;
-      padding: 12px;
+      padding: 0;
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      border: none;
       box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        0 20px 60px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
     }
 
     .report-frame::before {
       content: '';
       position: absolute;
-      inset: -1px;
+      inset: 0;
       border-radius: 24px;
       padding: 1px;
       background: linear-gradient(135deg, rgba(212, 168, 67, 0.15), transparent 30%, transparent 70%, rgba(212, 168, 67, 0.08));
@@ -317,6 +317,7 @@
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       pointer-events: none;
+      z-index: 2;
     }
 
     /* Efecto de brillo ambiental */
@@ -338,9 +339,9 @@
       width: 100%;
       aspect-ratio: 16 / 9;
       overflow: hidden;
-      border-radius: 16px;
+      border-radius: 24px;
       background: #0a0a0a;
-      border: 1px solid rgba(255, 255, 255, 0.04);
+      border: none;
       z-index: 1;
     }
 
@@ -351,6 +352,7 @@
       height: 100%;
       border: 0;
       background: #ffffff;
+      display: block;
     }
 
     /* =========================
@@ -361,10 +363,13 @@
       align-items: center;
       justify-content: space-between;
       padding: 12px 20px;
-      margin-bottom: 12px;
-      border-radius: 14px;
+      margin-bottom: 0;
+      border-radius: 14px 14px 0 0;
       background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.04);
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      position: relative;
+      z-index: 3;
     }
 
     .toolbar-left {
@@ -457,7 +462,7 @@
     }
 
     /* =========================
-       MODAL PANTALLA COMPLETA - CORREGIDO
+       MODAL PANTALLA COMPLETA
     ========================= */
     .fullscreen-modal {
       display: none;
@@ -531,8 +536,8 @@
 
     .fullscreen-modal .modal-body {
       flex: 1;
-      padding: 12px;
-      background: #ffffff;
+      padding: 0;
+      background: #0a0a0a;
       border-radius: 0;
       overflow: hidden;
       position: relative;
@@ -543,7 +548,8 @@
       height: 100%;
       border: 0;
       background: #ffffff;
-      border-radius: 12px;
+      border-radius: 0;
+      display: block;
     }
 
     @keyframes modalFadeIn {
@@ -700,11 +706,11 @@
       }
 
       .fullscreen-modal .modal-body {
-        padding: 8px;
+        padding: 0;
       }
 
       .fullscreen-modal .modal-body iframe {
-        border-radius: 8px;
+        border-radius: 0;
       }
     }
 
@@ -752,12 +758,12 @@
       <h1>Effective</h1>
       <p class="sub">Bienvenid@s</p>
       <div class="splash-loader"></div>
-      <p class="splash-footer">Cargando visualización</p>
+      <p class="splash-footer">Cargando</p>
     </div>
   </div>
 
   <!-- =========================
-       MODAL PANTALLA COMPLETA - CORREGIDO
+       MODAL PANTALLA COMPLETA
   ========================= -->
   <div class="fullscreen-modal" id="fullscreenModal">
     <div class="modal-header">
@@ -771,8 +777,9 @@
     </div>
     <div class="modal-body">
       <iframe
+        id="fullscreenFrame"
         title="Dashboard Clientes Effective - Fullscreen"
-        src="https://app.powerbi.com/reportEmbed?reportId=7647a9ef-ef89-45fa-9689-2d64e55c5637&autoAuth=true&ctid=1b635d23-d7cd-46f8-a33b-d081f11e0d7d"
+        src="https://app.powerbi.com/reportEmbed?reportId=7647a9ef-ef89-45fa-9689-2d64e55c5637&autoAuth=true&ctid=1b635d23-d7cd-46f8-a33b-d081f11e0d7d&navContentPaneEnabled=false&filterPaneEnabled=false"
         allowfullscreen="true">
       </iframe>
     </div>
@@ -788,7 +795,7 @@
         <div class="brand-icon">E</div>
         <div class="brand-text">
           <span class="name">Effective</span>
-          <span class="tag"></span>
+        
         </div>
       </div>
       <div class="topbar-right">
@@ -826,7 +833,7 @@
         <iframe
           id="dashboardFrame"
           title="Dashboard Clientes Effective"
-          src="https://app.powerbi.com/reportEmbed?reportId=7647a9ef-ef89-45fa-9689-2d64e55c5637&autoAuth=true&ctid=1b635d23-d7cd-46f8-a33b-d081f11e0d7d"
+          src="https://app.powerbi.com/reportEmbed?reportId=7647a9ef-ef89-45fa-9689-2d64e55c5637&autoAuth=true&ctid=1b635d23-d7cd-46f8-a33b-d081f11e0d7d&navContentPaneEnabled=false&filterPaneEnabled=false"
           allowfullscreen="true">
         </iframe>
       </div>
